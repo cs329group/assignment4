@@ -7,8 +7,10 @@ namespace assignment4
 		public static void Main (string[] args)
 		{
 			// Initial checks before we begin the application
-			 
-			if(args.Length == 0)
+			Console.Write("Hello world");
+			if (args.Length == 0) {
+			}
+				
 		}
 	}
 }
