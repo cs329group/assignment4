@@ -8,11 +8,15 @@ namespace assignment4
 		List<Job> schedule;
 		public PDEalgorithm (List<Job> schedule)
 		{
+			generateSchedule(schedule);
+		}
+		public void generateSchedule(List<Job> schedule){
 			this.schedule = schedule;
 			int scheduleEnd = fillEarliest (schedule);
 			fillLatest (schedule, scheduleEnd);
 			foreach (Job job in schedule) {
-				Console.Write ("Name:" + job.name + "   Duration:" + job.duration + "   ES:" + job.earlyStart + "   EE:" + job.earlyEnd + "   LS:" + job.lateStart + "   LS:" + job.lateEnd+"\n");
+				ASCIIBox box = new ASCIIBox(job.name, job.earlyStart,job.earlyEnd,job.lateStart,job.lateEnd);
+				Console.WriteLine(box.Art);
 			}
 		}
 
@@ -79,7 +83,7 @@ namespace assignment4
 				if (curJob.successors.Count == 0) {
 					curJob.lateEnd = scheduleEnd;
 				} else {
-					int minLatestStart = 0;
+					int minLatestStart = int.MaxValue;
 					// find the successor with the smallest latest start, which will serve as the curJob's latest end
 					foreach (Job nextJob in curJob.successors) {
 						if (nextJob.lateStart < minLatestStart) {
