@@ -107,7 +107,6 @@ namespace assignment4
             }
             set{
                 // TODO: Make this work so that it simply uses a string
-                Bounds b = new Bounds(false, false, 0, 0);
                 StringBuilder builder = new StringBuilder(Art);
                 setString(value, TASKIDINDEX, 0, builder);
                 Art = builder.ToString();
