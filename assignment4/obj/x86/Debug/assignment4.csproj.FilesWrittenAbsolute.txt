@@ -8,3 +8,8 @@
 /Users/Mason/Projects/cs329group/assignment4/assignment4/obj/x86/Debug/assignment4.exe.mdb
 /Users/Mason/Projects/cs329group/assignment4/assignment4/bin/Debug/assignment4.exe.mdb
 /Users/Mason/Projects/cs329group/assignment4/assignment4/bin/Debug/assignment4.exe
+/Users/kyle/Dev/cs329/assignment4/assignment4/assignment4/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/kyle/Dev/cs329/assignment4/assignment4/assignment4/bin/Debug/assignment4.exe.mdb
+/Users/kyle/Dev/cs329/assignment4/assignment4/assignment4/bin/Debug/assignment4.exe
+/Users/kyle/Dev/cs329/assignment4/assignment4/assignment4/obj/x86/Debug/assignment4.exe
+/Users/kyle/Dev/cs329/assignment4/assignment4/assignment4/obj/x86/Debug/assignment4.exe.mdb
