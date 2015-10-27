@@ -37,6 +37,7 @@ E 1 C,D
 |E    |1   |6   |7   |6   |7   |
 
 Critical Path: A, B, D, E,
+
 A, B, C, E,
 
 -----
