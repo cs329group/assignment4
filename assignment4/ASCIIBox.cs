@@ -5,6 +5,20 @@ using System.Reflection;
 
 namespace assignment4
 {
+    public struct Bounds{
+        public bool useLeftBound;
+        public bool useRightBound; 
+        public int leftBound;
+        public int rightBound;
+
+        public Bounds(bool l, bool r, int lb, int rb){
+            useLeftBound = l;
+            useRightBound = r;
+            leftBound = lb;
+            rightBound = rb;
+        }
+    }
+
 	/**
 	 * This class is what creates the ASCII art for our PDM chart.
 	 * For the ASCII art, we replace the 
@@ -43,7 +57,6 @@ namespace assignment4
         #region properties
 		public string Art { get; set; }
 
-		// TODO: Maybe rewrite this to have a helper function handle it, only difference would be index given
         // TODO: Rewrite all of these to handle at least 3 digits.
         // TODO: Do some work with the gets. Currenly they're useless and only help with compiler issues.
 
@@ -52,7 +65,8 @@ namespace assignment4
 				return EarlyStart;
 			}
 			set{
-                asciiHelper(EARLYSTARTINDEX, (char)(value + 48));
+                Bounds b = new Bounds(true, false, EARLYSTARTINDEX - 1, 0);
+                asciiHelper(EARLYSTARTINDEX, value, b);
 			}
 		}
 
@@ -61,7 +75,8 @@ namespace assignment4
 				return EarlyFinish;
 			}
 			set{
-                asciiHelper(EARLYFINISHINDEX, (char)(value + 48));
+                Bounds b = new Bounds(false, true,  0, EARLYFINISHINDEX+1);
+                asciiHelper(EARLYFINISHINDEX, value, b);
             }
 		}
 
@@ -70,7 +85,8 @@ namespace assignment4
 				return LateStart;
 			}
 			set{
-                asciiHelper(LATESTARTINDEX, (char)(value + 48));
+                Bounds b = new Bounds(true, false, LATESTARTINDEX - 1, 0);
+                asciiHelper(LATESTARTINDEX, value, b);
 
 			}
 		}
@@ -80,7 +96,8 @@ namespace assignment4
 				return LateFinish;
 			}
 			set{
-                asciiHelper(LATEFINISHINDEX, (char)(value + 48));
+                Bounds b = new Bounds(false, true,  0, LATEFINISHINDEX+1);
+                asciiHelper(LATEFINISHINDEX, value, b);
 			}
 		}
 
@@ -89,7 +106,10 @@ namespace assignment4
                 return TaskID;
             }
             set{
-                asciiHelper(TASKIDINDEX, value[0]);
+                // TODO: Make this work so that it simply uses a string
+                StringBuilder builder = new StringBuilder(Art);
+                setString(value, TASKIDINDEX, 0, builder);
+                Art = builder.ToString();
             }
         }
         #endregion
@@ -103,16 +123,59 @@ namespace assignment4
 			LateStart = lateStart;
 			LateFinish = lateFinish;
 		}
+
         /**
          * Returns a string that the properties use as a helper function.
          * Mainly to avoid a bunch of copying and pasting of code
          */
-        private void asciiHelper(int index, char character){
-            // TODO: Make it handle 3 digits
+        private void asciiHelper(int index, int value, Bounds bounds){
             StringBuilder builder = new StringBuilder(Art);
-            builder [index] = character;
+
+            // 1 digit, take care of it quick. Also argument check
+            String str = value.ToString();
+
+            if (value < 0)
+                throw new ArgumentOutOfRangeException();
+            else if (str.Length == 1)
+            {
+                builder[index] = charHelper(value);
+                goto SetArt;
+            }
+
+            int startingSpot = -1, endingSpot = -1;
+
+            // We're not going to account for super long numbers. We can do that... never
+            if (bounds.useLeftBound)
+            {
+                startingSpot = bounds.leftBound;
+            }
+            else if (bounds.useRightBound)
+            {
+                endingSpot = bounds.rightBound;
+                startingSpot = endingSpot - str.Length;
+            }
+            else
+                startingSpot = index;
+
+            setString(str, startingSpot, endingSpot, builder);
+
+            SetArt:
             Art = builder.ToString();
         }
+
+        private char charHelper(int toConvert){
+            return (char) (toConvert + 48);
+        }
+
+        private void setString(String str, int start, int end,  StringBuilder builder){
+            int startingPoint = start;
+            for (int i = 0; i < str.Length; i++)
+            {
+                builder[startingPoint] = str[i];
+                startingPoint++;
+            }
+        }
+       
 	}
 }
 

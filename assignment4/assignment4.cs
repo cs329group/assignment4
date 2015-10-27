@@ -69,7 +69,6 @@ namespace assignment4
 
 			//ASCIIBox box = new ASCIIBox("A", 1,2,3,4);
 			//Console.WriteLine(box.Art);
-
 			var Testing = new Testing ();
 			List<Job> schedule = Testing.sampleSchedule ();
 			PDEalgorithm pde = new PDEalgorithm (schedule);

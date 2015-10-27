@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,13 +15,15 @@ namespace assignment4
 		public int earlyEnd { get; set; }
 		public int lateStart { get; set; }
 		public int lateEnd { get; set; }
+		public bool criticalPath { get; set; }
 
 		public Job(string name, int duration, List<Job> predecessors, List<Job> successors)
 		{
 			this.name = name;
 			this.duration = duration;
 			this.predecessors = predecessors;
-			this.successors = successors;
+			this.successors = predecessors;
+			this.criticalPath = false;
 		}
 
 		public void setSuccessors(List<Job> successors){

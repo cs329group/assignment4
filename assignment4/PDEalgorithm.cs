@@ -18,6 +18,7 @@ namespace assignment4
 				ASCIIBox box = new ASCIIBox(job.name, job.earlyStart,job.earlyEnd,job.lateStart,job.lateEnd);
 				Console.WriteLine(box.Art);
 			}
+			findCriticalPath (schedule);
 		}
 
 		public int fillEarliest(List<Job> schedule)
@@ -99,6 +100,66 @@ namespace assignment4
 					jobQueue.Enqueue (prevJob);
 				}
 				curJob.lateStart = curJob.lateEnd - curJob.duration;
+			}
+		}
+
+		public List<List<Job>> findCriticalPath(List<Job> schedule){
+			Stack<Job> criticalPathStack = new Stack<Job> ();
+			Console.Write ("CRITICAL PATH\n\n");
+			// if ES=LS and EE=LE the job will be on the critical path
+			foreach (Job job in schedule) {
+				
+				if (partOfCriticalPath(job)) {
+					job.criticalPath = true;
+
+					// if this job is at the beginning we need to preload it into the stack
+					if (job.predecessors.Count == 0) {
+						criticalPathStack.Push (job);
+					}
+				}
+			}
+			List<List<Job>> criticalPathList = new List<List<Job>>();
+			int listID = 0;
+			List<Job> currentCriticalPathList = new List<Job>();
+			while (criticalPathStack.Count != 0) {
+				Job curJob = criticalPathStack.Pop ();
+				currentCriticalPathList.Add (curJob);
+
+				//check if successors are part of critical path
+				foreach (Job nextJob in curJob.successors) {
+					if (partOfCriticalPath (nextJob)) {
+						criticalPathStack.Push (nextJob);
+					}
+				}
+
+				//check if were at the end of the list, if we are add the current critical path to the overall critical path list
+				if (curJob.successors.Count == 0) {
+					criticalPathList.Insert (listID, currentCriticalPathList);
+					listID = listID + 1;
+				}
+			}
+			Console.Write ("Critical Path: ");
+			foreach (List<Job> joblist in criticalPathList) {
+				foreach (Job job in joblist) {
+					Console.Write (job.name + ", ");
+				}
+				Console.Write ("\n");
+			}
+
+			return criticalPathList;
+		}
+
+		// This is really bad, but the && operator wasnt working, idk why
+		private bool partOfCriticalPath(Job job){
+			if (job.earlyEnd == job.lateEnd) {
+				if (job.earlyStart == job.lateStart) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			else{
+				return false;
 			}
 		}
 	}
