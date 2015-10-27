@@ -14,7 +14,7 @@ Call our executable and pass the filename of the input file on the command line.
 ##Test cases
 Our test cases can be found in the /TestFiles directory
 ### Test Case 1
-This is a simple test case. 
+This is a simple test case to check multiple critical paths
 
 A 1
 
@@ -22,18 +22,22 @@ B 2 A
 
 C 3 B
 
-D 4 C
+D 3 B
+
+E 1 C,D
 
 
 ######Output
 | Job | Dur| ES | EE | LS | LE |
 |-----|----|----|----|----|----|
-|A|1|0|1|0|1|
-|B|2|1|3|1|3|
-|C|3|3|6|3|6|
-|D|4|6|10|6|10|
+|A    |1   |0   |1   |0   |1   |
+|B    |2   |1   |3   |1   |3   |
+|C    |3   |3   |6   |3   |6   |
+|D    |3   |3   |6   |3   |6   |
+|E    |1   |6   |7   |6   |7   |
 
-Critical Path: A,B,C,D
+Critical Path: A, B, D, E,
+A, B, C, E,
 
 -----
 
@@ -80,7 +84,7 @@ L 2 K
 |K    |2   |8   |10  |8   |10  |
 |L    |2   |10  |12  |10  |12  |
 
-Critical Path A,D,I,K,L
+Critical Path A, D, I, K, L,
 
 -----
 
@@ -119,6 +123,6 @@ I 2 E,H
 |H    |1   |11  |12  |13  |14  |
 |I    |2   |14  |16  |14  |16  |
 
-Critical Path: B,C,D,E,I
+Critical Path: B, C, D, E, I,
 
 -----
