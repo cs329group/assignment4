@@ -17,7 +17,7 @@ namespace assignment4
 					String line;
 					char[] delimiterChars = {' '};
 					char[] delimiterDepend = {','};
-					Console.WriteLine("1");
+					//Console.WriteLine("1");
 					while((line = sr.ReadLine()) != null){
 						string[] words = line.Split(delimiterChars);
 						int dur;
@@ -25,7 +25,7 @@ namespace assignment4
 							Console.WriteLine("Duration value could not be parsed to an int. Defaulting to 1");
 							dur = 1;
 						}
-						Console.WriteLine("2");
+						//Console.WriteLine("2");
 						//Parse dependancies
 						jobs.Add(new Job(words[0], dur, new List<Job>(), new List<Job>()));
 
@@ -38,7 +38,7 @@ namespace assignment4
 						}
 
 					}
-					Console.WriteLine("last");
+					//Console.WriteLine("last");
 
 					//add predecessors and sucessors
 					for(int i = 0; i < jobs.Count; i++){
@@ -58,7 +58,7 @@ namespace assignment4
 					}
 
 
-					printJobs(jobs);
+					//printJobs(jobs);
 
 				}
 			}catch(Exception e){
@@ -69,9 +69,9 @@ namespace assignment4
 
 			//ASCIIBox box = new ASCIIBox("A", 1,2,3,4);
 			//Console.WriteLine(box.Art);
-			var Testing = new Testing ();
-			List<Job> schedule = Testing.sampleSchedule ();
-			PDEalgorithm pde = new PDEalgorithm (schedule);
+			//var Testing = new Testing ();
+			//List<Job> schedule = Testing.sampleSchedule ();
+			PDEalgorithm pde = new PDEalgorithm (jobs);
 		}
 
 		public static void printJobs(List<Job> jobs){

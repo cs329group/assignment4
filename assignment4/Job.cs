@@ -22,7 +22,7 @@ namespace assignment4
 			this.name = name;
 			this.duration = duration;
 			this.predecessors = predecessors;
-			this.successors = predecessors;
+			this.successors = successors;
 			this.criticalPath = false;
 		}
 

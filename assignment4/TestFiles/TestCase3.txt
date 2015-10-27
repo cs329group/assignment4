@@ -1,0 +1,9 @@
+﻿A 2
+B 6
+C 4 A,B
+D 1 C
+E 3 D
+F 1 B
+G 5 B
+H 1 F,G
+I 2 E,H

@@ -41,4 +41,12 @@
     <Compile Include="Testing.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="TestFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TestFiles\TestCase2.txt" />
+    <None Include="TestFiles\TestCase1.txt" />
+    <None Include="TestFiles\TestCase3.txt" />
+  </ItemGroup>
 </Project>

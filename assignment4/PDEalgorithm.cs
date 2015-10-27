@@ -105,7 +105,6 @@ namespace assignment4
 
 		public List<List<Job>> findCriticalPath(List<Job> schedule){
 			Stack<Job> criticalPathStack = new Stack<Job> ();
-			Console.Write ("CRITICAL PATH\n\n");
 			// if ES=LS and EE=LE the job will be on the critical path
 			foreach (Job job in schedule) {
 				
@@ -134,8 +133,14 @@ namespace assignment4
 
 				//check if were at the end of the list, if we are add the current critical path to the overall critical path list
 				if (curJob.successors.Count == 0) {
-					criticalPathList.Insert (listID, currentCriticalPathList);
-					listID = listID + 1;
+					if (currentCriticalPathList [0].predecessors.Count == 0) {
+						if (currentCriticalPathList[currentCriticalPathList.Count-1].successors.Count == 0) {
+							List<Job> copy = new List<Job>(currentCriticalPathList);
+							criticalPathList.Insert (listID, copy);
+							listID = listID + 1;
+						}
+					}
+					currentCriticalPathList.Clear ();
 				}
 			}
 			Console.Write ("Critical Path: ");
