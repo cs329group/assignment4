@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace assignment4
 {
 	public class PDEalgorithm
@@ -103,6 +105,7 @@ namespace assignment4
 			}
 		}
 
+		//CRITICAL PATH
 		public List<List<Job>> findCriticalPath(List<Job> schedule){
 			Stack<Job> criticalPathStack = new Stack<Job> ();
 			// if ES=LS and EE=LE the job will be on the critical path
@@ -134,9 +137,14 @@ namespace assignment4
 				//check if were at the end of the list, if we are add the current critical path to the overall critical path list
 				if (curJob.successors.Count == 0) {
 					if (currentCriticalPathList [0].predecessors.Count == 0) {
-						if (currentCriticalPathList[currentCriticalPathList.Count-1].successors.Count == 0) {
-							List<Job> copy = new List<Job>(currentCriticalPathList);
-							criticalPathList.Insert (listID, copy);
+						List<Job> copy = new List<Job> (currentCriticalPathList);
+						criticalPathList.Insert (listID, copy);
+						listID = listID + 1;
+						
+					} else {
+						List<Job> temp = fillCriticalPathBackwards (new List<Job> (currentCriticalPathList));
+						if (!checkDuplicates (criticalPathList, temp)) {
+							criticalPathList.Insert (listID, temp);
 							listID = listID + 1;
 						}
 					}
@@ -166,6 +174,39 @@ namespace assignment4
 			else{
 				return false;
 			}
+		}
+
+		// to handle multiple critical paths
+		private List<Job> fillCriticalPathBackwards(List<Job> criticalList){
+			Job curJob = criticalList [0];
+			while (curJob.predecessors.Count != 0) {
+				foreach (Job prevJob in curJob.predecessors) {
+					if (partOfCriticalPath (prevJob)) {
+						criticalList.Insert (0, prevJob);
+						curJob = prevJob;
+						break;
+					}
+				}
+			}
+			return criticalList;
+		}
+
+		// Returns true if there is a duplicate
+		private Boolean checkDuplicates(List<List<Job>> criticalPathLists, List<Job> currentCriticalPath){
+			foreach (List<Job> tempCriticalPathList in criticalPathLists) {
+				if (tempCriticalPathList.Count == currentCriticalPath.Count) {
+					bool a = true;
+					for (int i = 0; i < tempCriticalPathList.Count - 1; i++) {
+						if (tempCriticalPathList.ElementAt (i) != currentCriticalPath.ElementAt (i)) {
+							a = false;
+						}
+					}
+					if (a) {
+						return true;
+					}
+				}
+			}
+			return false;
 		}
 	}
 }
