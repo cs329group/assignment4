@@ -1,9 +1,13 @@
-﻿<Properties StartupItem="assignment4/assignment4.csproj" GitUserInfo="UsingGIT">
+﻿<Properties StartupItem="assignment4\assignment4.csproj" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="assignment4/assignment4.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="assignment4\TestFiles\TestCase1.txt">
     <Files>
-      <File FileName="assignment4/assignment4.cs" Line="36" Column="38" />
-      <File FileName="assignment4/Job.cs" Line="23" Column="32" />
+      <File FileName="assignment4\assignment4.cs" Line="61" Column="24" />
+      <File FileName="assignment4\Job.cs" Line="25" Column="32" />
+      <File FileName="assignment4\PDEalgorithm.cs" Line="170" Column="13" />
+      <File FileName="assignment4\TestFiles\TestCase1.txt" Line="5" Column="8" />
+      <File FileName="assignment4\TestFiles\TestCase2.txt" Line="1" Column="1" />
+      <File FileName="assignment4\TestFiles\TestCase3.txt" Line="9" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -21,6 +25,33 @@
           </Item>
           <Item Key="MonoDevelop.Ide.Execution.MonoExecutionCustomizer">
             <Value ctype="MonoExecutionParameters" />
+          </Item>
+        </CommandData>
+      </Data>
+      <Data Name="TestCase1" Id="7f65122d-6534-4a93-8ccd-172ebbb59ae5" ModeId="Default">
+        <CommandData>
+          <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
+            <Value Arguments="C:\Users\Matt\Documents\cs329group\assignment4\assignment_4.git\assignment4\TestFiles\TestCase1.txt" WorkingDirectory="E:\workspace\329\assignment4" ctype="CustomArgsExecutionModeData">
+              <EnvironmentVariables />
+            </Value>
+          </Item>
+        </CommandData>
+      </Data>
+      <Data Name="TestCase2" Id="409679e3-b854-4952-a867-1f32409e3b0c" ModeId="Default">
+        <CommandData>
+          <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
+            <Value Arguments="C:\Users\Matt\Documents\cs329group\assignment4\assignment_4.git\assignment4\TestFiles\TestCase2.txt" ctype="CustomArgsExecutionModeData">
+              <EnvironmentVariables />
+            </Value>
+          </Item>
+        </CommandData>
+      </Data>
+      <Data Name="TestCase3" Id="21ff400a-c567-406a-871a-f1f319549292" ModeId="Default">
+        <CommandData>
+          <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
+            <Value Arguments="C:\Users\Matt\Documents\cs329group\assignment4\assignment_4.git\assignment4\TestFiles\TestCase3.txt" ctype="CustomArgsExecutionModeData">
+              <EnvironmentVariables />
+            </Value>
           </Item>
         </CommandData>
       </Data>

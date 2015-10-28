@@ -38,7 +38,6 @@
     <Compile Include="ASCIIBox.cs" />
     <Compile Include="PDEalgorithm.cs" />
     <Compile Include="Job.cs" />
-    <Compile Include="Testing.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
