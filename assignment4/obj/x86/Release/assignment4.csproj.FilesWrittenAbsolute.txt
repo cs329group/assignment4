@@ -1,0 +1,5 @@
+/Users/Mason/Projects/cs329group/assignment4/assignment4/obj/x86/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/Mason/Projects/cs329group/assignment4/assignment4/bin/Release/assignment4.exe.mdb
+/Users/Mason/Projects/cs329group/assignment4/assignment4/bin/Release/assignment4.exe
+/Users/Mason/Projects/cs329group/assignment4/assignment4/obj/x86/Release/assignment4.exe
+/Users/Mason/Projects/cs329group/assignment4/assignment4/obj/x86/Release/assignment4.exe.mdb
